@@ -3,7 +3,14 @@
 class User::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
+
+  def update
+    super
+    if account_update_params[:profile_image].present?
+      resource.image.attach(account_update_params[:profile_image])
+    end
+  end
 
   # GET /resource/sign_up
   # def new
@@ -63,9 +70,27 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
+  end
+
+  # user情報をパスワードなしで更新できるメソッド
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :profile_image])
+  end
+
+  # 編集後のリダイレクト先を指定するメソッド
+  def after_update_path_for(resource)
+    user_user_path(current_user)
+  end
+
+  #ログアウト後の遷移先の指定
+  def after_sign_up_path_for(resource)
+    user_user_path(current_user[:id])
   end
 
 end
