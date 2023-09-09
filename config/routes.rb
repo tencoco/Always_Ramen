@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'homes/top'
-    resources :shops, only: [:new, :show, :edit, :index, :create, :destroy]
+    resources :shops, only: [:new, :show, :edit, :index, :create, :destroy, :update]
   end
 
   namespace :user do
