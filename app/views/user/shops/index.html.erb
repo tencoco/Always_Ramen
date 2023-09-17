@@ -1,2 +1,29 @@
-<h1>User::Shops#index</h1>
-<p>Find me in app/views/user/shops/index.html.erb</p>
+<h2>店舗一覧</h2>
+<% @shops.each do |shop| %>
+  <table>
+    <thead>
+      <tr>
+        <td>画像</td>
+        <td>ID</td>
+        <td>店舗名</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to user_shop_path(shop) do %>
+            <%= image_tag shop.get_image(100, 100) %>
+          <% end %>
+        </td>
+        <td>
+          <%= shop.id %>
+        </td>
+        <td>
+          <%= link_to user_shop_path(shop) do %>
+            <%= shop.name %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

@@ -5,6 +5,7 @@ class Admin::ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
+    @shop.admin_id = current_admin.id
     tags = Vision.get_image_data(shop_params[:image])
     if @shop.save
       tags.each do |tag|
@@ -48,7 +49,7 @@ class Admin::ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :phone, :first_hour, :first_min, :end_hour, :end_min, :closed, :access, :parking, :remarks, :image)
+    params.require(:shop).permit(:admin_id, :name, :address, :phone, :first_hour, :first_min, :end_hour, :end_min, :closed, :access, :parking, :remarks, :image)
   end
 
 

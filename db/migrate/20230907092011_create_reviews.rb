@@ -6,8 +6,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.integer :shop_id,    null: false
 
       t.string :title,       null: false
-      t.string :content,     null: false
-      t.string :score,       null: false
+      t.text :content,       null: false
 
       t.timestamps
     end
