@@ -1,29 +1,28 @@
-<%= link_to "新規投稿", new_admin_shop_path %>
-<% @shops.each do |shop| %>
-  <table>
-    <thead>
-      <tr>
-        <td>画像</td>
-        <td>ID</td>
-        <td>店舗名</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <%= link_to admin_shop_path(shop) do %>
-            <%= image_tag shop.get_image(100, 100) %>
-          <% end %>
-        </td>
-        <td>
-          <%= shop.id %>
-        </td>
-        <td>
-          <%= link_to admin_shop_path(shop) do %>
-            <%= shop.name %>
-          <% end %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="offset-md-2">
+      <%= link_to "新規投稿", new_admin_shop_path %>
+      <% @shops.each do |shop| %>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to admin_shop_path(shop) do %>
+                  <%= image_tag shop.get_image(100, 100) %>
+                <% end %>
+              </td>
+              <td>
+                <%= shop.id %>
+              </td>
+              <td>
+                <%= link_to admin_shop_path(shop) do %>
+                  <%= shop.name %>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

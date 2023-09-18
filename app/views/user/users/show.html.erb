@@ -1,5 +1,11 @@
-<h2><%= @user.name %>さんの会員情報</h2>
-<%= image_tag @user.get_profile_image(100,100) %>
-<%= @user.id %>
-<%= @user.name %>
-<%= link_to 'ユーザー編集', edit_user_user_path %>
+<div class="container">
+  <div class="row">
+    <div class="offset-md-1">
+      <h2><%= @user.name %>さんの会員情報</h2>
+      <%= image_tag @user.get_profile_image(100,100) %>
+      <%= @user.id %>
+      <%= @user.name %>
+      <%= link_to 'ユーザー編集', edit_user_user_path %>
+    </div>
+  </div>
+</div>

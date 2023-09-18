@@ -1,29 +1,35 @@
-<h2>Results index</h2>
-<table>
-  <thead>
-    <tr>
-      <td>画像</td>
-      <td>ID</td>
-      <td>店舗名</td>
-    </tr>
-  </thead>
-<% @shops.each do |shop| %>
-  <tbody>
-    <tr>
-      <td>
-        <%= link_to user_shop_path(shop) do %>
-          <%= image_tag shop.get_image(100, 100) %>
-        <% end %>
-      </td>
-      <td>
-        <%= shop.id %>
-      </td>
-      <td>
-        <%= link_to user_shop_path(shop) do %>
-          <%= shop.name %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-<% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="offset-md-1">
+      <h2>Results index</h2>
+      <table>
+        <thead>
+          <tr>
+            <td>画像</td>
+            <td>ID</td>
+            <td>店舗名</td>
+          </tr>
+        </thead>
+      <% @shops.each do |shop| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_shop_path(shop) do %>
+                <%= image_tag shop.get_image(100, 100) %>
+              <% end %>
+            </td>
+            <td>
+              <%= shop.id %>
+            </td>
+            <td>
+              <%= link_to user_shop_path(shop) do %>
+                <%= shop.name %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

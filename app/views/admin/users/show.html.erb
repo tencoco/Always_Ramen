@@ -1,28 +1,33 @@
-<h2><%= @user.name %>さんの会員情報</h2>
-<%= image_tag @user.get_profile_image(100,100) %>
-<%= @user.id %>
-<%= @user.name %>
+<div class="container">
+  <div class="row">
+    <div class="offset-md-2">
+      <%= image_tag @user.get_profile_image(100,100) %>
+      <%= @user.id %>
+      <%= @user.name %>
 
-<h2>レビュー履歴</h2>
-<% @user.reviews.each do |review| %>
-  <div id="star_<%= review.id %>"></div>
-  <script>
-  $(document).on('turbolinks:load', function() {
-    let elem = document.querySelector('#star_<%= review.id %>');
-    if (elem == null) return;
+      <h2>レビュー履歴</h2>
+      <% @user.reviews.each do |review| %>
+        <div id="star_<%= review.id %>"></div>
+        <script>
+        $(document).on('turbolinks:load', function() {
+          let elem = document.querySelector('#star_<%= review.id %>');
+          if (elem == null) return;
 
-    elem.innerHTML = "";
-    let opt = {
-      starOn: "<%= asset_path('star-on.png') %>",
-      starOff: "<%= asset_path('star-off.png') %>",
-      starHalf: "<%= asset_path('star-half.png') %>",
-      score: "<%= review.star %>",
-      readOnly: true,
-    };
-    raty(elem, opt);
-  });
-  </script>
-  <%= review.title %></br>
-  <%= review.content %>
-  <%= link_to 'Destroy', admin_user_path(review.id), method: :delete, class: 'btn btn-danger' %>
-<% end %>
+          elem.innerHTML = "";
+          let opt = {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            score: "<%= review.star %>",
+            readOnly: true,
+          };
+          raty(elem, opt);
+        });
+        </script>
+        <%= review.title %></br>
+        <%= review.content %>
+        <%= link_to 'Destroy', admin_user_path(review.id), method: :delete, class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+  </div>
+</div>

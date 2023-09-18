@@ -1,23 +1,29 @@
-<h1>新規投稿</h1>
-<%= form_with model: @shop, url: admin_shops_path, local:true do |f| %>
-  <h4>店名</h4>
-  <%= f.text_field :name %>
-  <h4>住所</h4>
-  <%= f.text_area :address %>
-  <h4>電話番号</h4>
-  <%= f.text_field :phone %>
-  <h4>営業時間</h4>
-  <%= f.select :first_hour,  *[0..28], :prompt => "開店時刻(hour)" %>:<%= f.select :first_min,  *[0..59], :prompt => "開店時刻(min)" %>~<%= f.select :end_hour,  *[0..28], :prompt => "閉店時刻(hour)" %>:<%= f.select :end_min,  *[0..59], :prompt => "閉店時刻(min)" %>
-  <h4>休業日</h4>
-  <%= f.text_field :closed %>
-  <h4>アクセス</h4>
-  <%= f.text_area :access %>
-  <h4>駐車場</h4>
-  <%= f.radio_button :parking, "false" %>なし
-  <%= f.radio_button :parking, "true" %>あり
-  <h4>備考</h4>
-  <%= f.text_area :remarks %>
-  <h4>画像</h4>
-  <%= f.file_field :image %>
-  <%= f.submit '投稿' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="offset-md-2">
+      <h1>新規投稿</h1>
+      <%= form_with model: @shop, url: admin_shops_path, local:true do |f| %>
+        <h4>店名</h4>
+        <%= f.text_field :name %>
+        <h4>住所</h4>
+        <%= f.text_area :address %>
+        <h4>電話番号</h4>
+        <%= f.text_field :phone %>
+        <h4>営業時間</h4>
+        <%= f.select :first_hour,  *[0..28], :prompt => "開店時刻(hour)" %>:<%= f.select :first_min,  *[0..59], :prompt => "開店時刻(min)" %>~<%= f.select :end_hour,  *[0..28], :prompt => "閉店時刻(hour)" %>:<%= f.select :end_min,  *[0..59], :prompt => "閉店時刻(min)" %>
+        <h4>休業日</h4>
+        <%= f.text_field :closed %>
+        <h4>アクセス</h4>
+        <%= f.text_area :access %>
+        <h4>駐車場</h4>
+        <%= f.radio_button :parking, "false" %>なし
+        <%= f.radio_button :parking, "true" %>あり
+        <h4>備考</h4>
+        <%= f.text_area :remarks %>
+        <h4>画像</h4>
+        <%= f.file_field :image %>
+        <%= f.submit '投稿' %>
+      <% end %>
+    </div>
+  </div>
+</div>
